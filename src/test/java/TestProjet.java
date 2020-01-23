@@ -59,7 +59,8 @@ public class testInitial {
         driver.findElement(By.name("bouton")).click();
         driver.findElement(By.linkText("Liste")).click();
 
-
+    }
+    
     @After
     public void tearDown() throws Exception {
         //driver.quit();
