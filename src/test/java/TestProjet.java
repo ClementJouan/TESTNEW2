@@ -23,14 +23,43 @@ public class TestProjet {
 
     @Test
     public void testProjet() throws Exception {
-        driver.get("http://10.131.1.32/dolibarr-10.0.6/dolibarr-10.0.6/htdocs/");
+driver.get("http://10.131.1.32/dolibarr-10.0.6/dolibarr-10.0.6/htdocs/index.php");
         driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("clement");
+        driver.findElement(By.id("username")).sendKeys("test");
         driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("clement");
-        driver.findElement(By.xpath("//*[@id=\"login_line2\"]/input")).click();
+        driver.findElement(By.id("password")).sendKeys("test");
+        driver.findElement(By.xpath("//input[@class='button']")).click();
+        driver.findElement(By.linkText("Utilisateurs & Groupes")).click();
+        driver.findElement(By.linkText("Nouvel utilisateur")).click();
+        driver.findElement(By.id("lastname")).clear();
+        driver.findElement(By.id("lastname")).sendKeys("new");
+        driver.findElement(By.name("login")).click();
+        driver.findElement(By.name("login")).clear();
+        driver.findElement(By.name("login")).sendKeys("new");
+        driver.findElement(By.name("password")).click();
+
+        // ERROR: Caught exception [ERROR: Unsupported command [doubleClick | name=password | ]]
+        driver.findElement(By.name("password")).clear();
+        driver.findElement(By.name("password")).sendKeys("new");
+        driver.findElement(By.id("admin")).click();
+        driver.findElement(By.id("admin")).click();
+        driver.findElement(By.name("create")).click();
+        driver.findElement(By.linkText("Liste des utilisateurs")).click();
+        driver.findElement(By.xpath("//a[@id='mainmenua_commercial']/span")).click();
+        driver.findElement(By.linkText("Nouvelle commande")).click();
+        driver.findElement(By.xpath("//div[@id='id-right']/div/form/div[2]/table/tbody/tr[3]/td[2]/a/span")).click();
+        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("name")).sendKeys("Nike");
+        driver.findElement(By.id("customerprospect")).click();
+        new Select(driver.findElement(By.id("customerprospect"))).selectByVisibleText("Client");
+        driver.findElement(By.id("customerprospect")).click();
+        driver.findElement(By.name("create")).click();
+        driver.findElement(By.xpath("//div[@id='id-right']/div/form/div[2]/table/tbody/tr[4]/td[2]/span/span/span/span[2]/b")).click();
+        driver.findElement(By.xpath("//div[@id='id-right']/div/form/div[2]/table/tbody/tr[4]/td[2]/span/span/span/span[2]/b")).click();
+        driver.findElement(By.name("bouton")).click();
+        driver.findElement(By.linkText("Liste")).click();
         try {
-            assertEquals("Accueil", driver.findElement(By.xpath("//*[@id=\"id-right\"]/div/table/tbody/tr/td[2]/div")).getText());
+            assertEquals(driver.findElement(By.xpath("//tr[3]//td[3]//a[1]")).getText(), "Nike");
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
