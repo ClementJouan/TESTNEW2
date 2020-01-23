@@ -4,11 +4,10 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestProjet {
+public class testInitial {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -23,8 +22,8 @@ public class TestProjet {
     }
 
     @Test
-    public void testProjet() throws Exception {
-driver.get("http://10.131.1.32/dolibarr-10.0.6/dolibarr-10.0.6/htdocs/index.php");
+    public void testInitial() throws Exception {
+        driver.get("http://10.131.1.32/dolibarr-10.0.6/dolibarr-10.0.6/htdocs/index.php");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("test");
         driver.findElement(By.id("password")).clear();
@@ -60,11 +59,10 @@ driver.get("http://10.131.1.32/dolibarr-10.0.6/dolibarr-10.0.6/htdocs/index.php"
         driver.findElement(By.name("bouton")).click();
         driver.findElement(By.linkText("Liste")).click();
 
-    }
-    
+
     @After
     public void tearDown() throws Exception {
-        driver.quit();
+        //driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
