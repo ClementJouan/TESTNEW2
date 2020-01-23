@@ -59,7 +59,8 @@ driver.get("http://10.131.1.32/dolibarr-10.0.6/dolibarr-10.0.6/htdocs/index.php"
         driver.findElement(By.name("bouton")).click();
         driver.findElement(By.linkText("Liste")).click();
 
-
+    }
+    
     @After
     public void tearDown() throws Exception {
         driver.quit();
