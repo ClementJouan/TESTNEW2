@@ -4,10 +4,11 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class testInitial {
+public class TestProjet {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -17,13 +18,13 @@ public class testInitial {
     public void setUp() throws Exception {
         String s = System.setProperty("webdriver.gecko.driver", "C:\\firefoxDriver\\geckodriver.exe");
         driver = new FirefoxDriver();
-        baseUrl = "https://www.google.com/";
+
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
-    public void testInitial() throws Exception {
-        driver.get("http://10.131.1.32/dolibarr-10.0.6/dolibarr-10.0.6/htdocs/index.php");
+    public void testProjet() throws Exception {
+driver.get("http://10.131.1.32/dolibarr-10.0.6/dolibarr-10.0.6/htdocs/index.php");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("test");
         driver.findElement(By.id("password")).clear();
@@ -63,7 +64,7 @@ public class testInitial {
     
     @After
     public void tearDown() throws Exception {
-        //driver.quit();
+        driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
